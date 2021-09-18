@@ -7,6 +7,8 @@
  */
 var Archiver = require('./lib/core');
 
+var plugins = ['zip', 'tar', 'json'];
+
 var formats = {};
 
 /**
@@ -29,9 +31,14 @@ var vending = function(format, options) {
  * @return {Archiver}
  */
 vending.create = function(format, options) {
-  if (formats[format]) {
+  if (plugins.includes(format)) {
     var instance = new Archiver(format, options);
     instance.setFormat(format);
+    
+    if (!vending.isRegisteredFormat(format)) {
+      vending.registerFormat(format, require('./lib/plugins/' + format));
+    }
+
     instance.setModule(new formats[format](options));
 
     return instance;
