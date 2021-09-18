@@ -7,7 +7,7 @@ Visit the [API documentation](https://www.archiverjs.com/) for a list of all met
 ## Install
 
 ```bash
-npm install archiver --save
+npm install fast-archiver --save
 ```
 
 ## Quick Start
@@ -15,7 +15,7 @@ npm install archiver --save
 ```js
 // require modules
 const fs = require('fs');
-const archiver = require('archiver');
+const archiver = require('fast-archiver');
 
 // create a file to stream archive data to.
 const output = fs.createWriteStream(__dirname + '/example.zip');
