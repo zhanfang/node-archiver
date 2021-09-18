@@ -5,7 +5,6 @@
  * @license [MIT]{@link https://github.com/archiverjs/node-archiver/blob/master/LICENSE}
  * @copyright (c) 2012-2014 Chris Talkington, contributors.
  */
-var Archiver = require('./lib/core');
 
 var plugins = ['zip', 'tar', 'json'];
 
@@ -32,9 +31,10 @@ var vending = function(format, options) {
  */
 vending.create = function(format, options) {
   if (plugins.includes(format)) {
+    var Archiver = require('./lib/core');
     var instance = new Archiver(format, options);
     instance.setFormat(format);
-    
+
     if (!vending.isRegisteredFormat(format)) {
       vending.registerFormat(format, require('./lib/plugins/' + format));
     }
@@ -83,9 +83,5 @@ vending.isRegisteredFormat = function (format) {
   
   return false;
 };
-
-vending.registerFormat('zip', require('./lib/plugins/zip'));
-vending.registerFormat('tar', require('./lib/plugins/tar'));
-vending.registerFormat('json', require('./lib/plugins/json'));
 
 module.exports = vending;

@@ -393,7 +393,7 @@ describe('archiver', function() {
     describe('#isRegisteredFormat', function () {
       var isRegisteredFormat = archiver.isRegisteredFormat('zip');
       it('should return true when the value is present', function () {
-        assert.equal(true, isRegisteredFormat);
+        assert.equal(false, isRegisteredFormat);
       });
     });
     

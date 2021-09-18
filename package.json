@@ -1,6 +1,6 @@
 {
   "name": "fast-require-archiver",
-  "version": "5.3.0",
+  "version": "5.3.1",
   "description": "a streaming interface for archive generation with fast require",
   "homepage": "https://github.com/zhanfang/node-archiver",
   "author": {
